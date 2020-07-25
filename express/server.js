@@ -4,8 +4,15 @@ const path = require('path');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
+const expressLayouts = require('express-ejs-layouts');
 
 const router = express.Router();
+
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 router.get('/', (req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/html' });
   res.write('<h1>Hello from Express.js! ANJAN PAUL</h1>');
