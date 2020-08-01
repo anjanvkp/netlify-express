@@ -7,11 +7,6 @@ const cors = require("cors");
 const app = express();
 const router = express.Router();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
-
-app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -29,7 +24,6 @@ db.mongoose
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
-    initial();
   })
   .catch(err => {
     console.error("Connection error", err);
